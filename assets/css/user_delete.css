@@ -1,0 +1,79 @@
+.delete-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+    text-align: center;
+}
+
+.page-title {
+    color: #142745;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* Confirmation Card */
+.delete-card {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.delete-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.delete-card p {
+    font-size: 1.05rem;
+    color: #333;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-danger, .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+.btn-danger:hover {
+    background: #fff;
+    color: #dc3545;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,51 @@
+.error-403-container {
+    max-width: 700px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 20px;
+    animation: fadeSlideIn 1s ease forwards;
+}
+
+.error-code {
+    font-size: 8rem;
+    color: #dc3545; /* red for forbidden */
+    font-weight: 800;
+    animation: pulse 2s infinite;
+}
+
+.error-message {
+    font-size: 1.5rem;
+    color: #142745;
+    margin: 20px 0 30px;
+    font-weight: 500;
+}
+
+/* Button */
+.btn-primary {
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 25px;
+    background-color: #142745;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #fff;
+    color: #142745;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeSlideIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

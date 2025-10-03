@@ -1,0 +1,75 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_list.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="task-list-container">
+    <h2 class="page-title">Task List</h2>
+
+    <!-- Filter Form -->
+    <form method="GET" class="filter-form">
+        <input type="text" name="title" placeholder="Title" value="{{ request.GET.title }}">
+        <select name="status">
+            <option value="all">All Status</option>
+            <option value="pending" {% if request.GET.status == 'pending' %}selected{% endif %}>Pending</option>
+            <option value="in_progress" {% if request.GET.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+            <option value="completed" {% if request.GET.status == 'completed' %}selected{% endif %}>Completed</option>
+        </select>
+        <input type="text" name="assigned_by" placeholder="Assigned By" value="{{ request.GET.assigned_by }}">
+        <input type="text" name="assigned_to" placeholder="Assigned To" value="{{ request.GET.assigned_to }}">
+        <input type="date" name="due_start" value="{{ request.GET.due_start }}">
+        <input type="date" name="due_end" value="{{ request.GET.due_end }}">
+        <button type="submit" class="btn-primary">Filter</button>
+    </form>
+
+    {% if tasks %}
+    <div class="table-wrapper">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Assigned To</th>
+                <th>Assigned By</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Worked Hours</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.assigned_to.username }}</td>
+                <td>{% if task.assigned_by %}{{ task.assigned_by.username }}{% else %}-{% endif %}</td>
+                <td>{{ task.due_date }}</td>
+                <td class="status-{{ task.status }}">{{ task.status|title }}</td>
+                <td>{{ task.worked_hours|default:"-" }}</td>
+                <td>{{ task.created_at }}</td>
+                <td><a href="{% url 'task_detail' task.pk %}" class="btn-view">View</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-data">No tasks found.</p>
+    {% endif %}
+    <a href="{% url 'dashboard' %}" class="btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

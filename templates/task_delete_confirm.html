@@ -1,0 +1,35 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_delete.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="task-delete-container">
+    <h2 class="page-title">Delete Task</h2>
+
+    <div class="task-card">
+        <p>Are you sure you want to delete task "<strong>{{ task.title }}</strong>"?</p>
+
+        <div class="task-actions">
+            <form method="POST" class="delete-form">
+                {% csrf_token %}
+                <button type="submit" class="btn-danger">Yes, Delete</button>
+                <a href="{% url 'task_detail' task.pk %}" class="btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

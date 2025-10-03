@@ -1,0 +1,95 @@
+/* Form Container */
+.form-container {
+    max-width: 480px;
+    background: #ffffff;
+    padding: 35px 30px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    animation: fadeInUp 0.9s ease;
+    text-align: center;
+}
+
+.form-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #142745;
+    margin-bottom: 20px;
+}
+
+/* Alerts */
+.alert {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+    animation: shake 0.3s ease;
+}
+.alert ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #142745;
+}
+
+/* Django Form Widgets */
+.registration-form input,
+.registration-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.registration-form input:focus,
+.registration-form select:focus {
+    border-color: #142745;
+    box-shadow: 0 0 8px rgba(20,39,69,0.3);
+    outline: none;
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #142745;
+    border: none;
+    padding: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ffffff;
+    border-radius: 25px;
+    width: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background-color: #ffffff;
+    color: #142745;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}

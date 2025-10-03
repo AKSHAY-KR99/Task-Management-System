@@ -1,0 +1,69 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/user_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="user-list-container">
+    <h2 class="page-title">User List</h2>
+
+    <!-- Filter Form -->
+    <form method="GET" class="filter-form">
+        <div class="form-group">
+            <input type="text" name="username" placeholder="Search by Username" value="{{ request.GET.username }}">
+        </div>
+        <div class="form-group">
+            <select name="role">
+                <option value="all">All Roles</option>
+                <option value="user" {% if request.GET.role == "user" %}selected{% endif %}>User</option>
+                <option value="admin" {% if request.GET.role == "admin" %}selected{% endif %}>Admin</option>
+                <option value="super_admin" {% if request.GET.role == "super_admin" %}selected{% endif %}>Super Admin</option>
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Filter</button>
+            <a href="{% url 'dashboard' %}" class="btn-secondary">Back</a>
+        </div>
+    </form>
+
+    {% if users %}
+    <div class="table-wrapper">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.role|title }}</td>
+                    <td><a href="{% url 'user_detail' u.pk %}" class="btn-view">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="no-data">No users found.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

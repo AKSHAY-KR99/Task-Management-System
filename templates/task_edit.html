@@ -1,0 +1,85 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_edit.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="task-edit-container">
+    <h2 class="page-title">Edit Task</h2>
+
+    <div class="task-card">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="POST" class="task-edit-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Save Changes</button>
+                <a href="{% url 'task_detail' task.pk %}" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const statusField = document.querySelector("select[name='status']");
+    const reportField = document.querySelector("textarea[name='completion_report']");
+    const hoursField = document.querySelector("input[name='worked_hours']");
+
+    function toggleFields() {
+        if (statusField.value === "completed") {
+            reportField.removeAttribute("readonly");
+            reportField.setAttribute("required", "required");
+            hoursField.removeAttribute("readonly");
+            hoursField.setAttribute("required", "required");
+        } else {
+            reportField.setAttribute("readonly", "readonly");
+            reportField.removeAttribute("required");
+            hoursField.setAttribute("readonly", "readonly");
+            hoursField.removeAttribute("required");
+        }
+    }
+
+    toggleFields();
+    statusField.addEventListener("change", toggleFields);
+});
+</script>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,112 @@
+.task-create-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.page-title {
+    text-align: center;
+    color: #142745;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* Card for form */
+.task-card {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Form Fields */
+.task-create-form .form-group {
+    margin-bottom: 20px;
+}
+.task-create-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #142745;
+}
+.task-create-form input,
+.task-create-form select,
+.task-create-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1.5px solid #ddd;
+    font-size: 0.95rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.task-create-form input:focus,
+.task-create-form select:focus,
+.task-create-form textarea:focus {
+    border-color: #142745;
+    box-shadow: 0 0 8px rgba(20,39,69,0.3);
+    outline: none;
+}
+
+/* Action Buttons */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #142745;
+    color: #fff;
+    border: none;
+}
+.btn-primary:hover {
+    background: #fff;
+    color: #142745;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Alerts */
+.alert {
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+.alert-success { background-color: #d4edda; color: #155724; }
+.alert-danger { background-color: #f8d7da; color: #721c24; }
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+}

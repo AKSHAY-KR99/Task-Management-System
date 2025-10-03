@@ -1,0 +1,118 @@
+.task-detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.page-title {
+    text-align: center;
+    color: #142745;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* Task Card */
+.task-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Table Styling */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.styled-table th, .styled-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+.styled-table th {
+    color: #142745;
+    font-weight: 600;
+}
+
+/* Status Coloring */
+.status-completed {
+    color: #28a745;
+    font-weight: 600;
+}
+.status-pending {
+    color: #dc3545;
+    font-weight: 600;
+}
+.status-in_progress {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.task-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-danger, .btn-secondary {
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #142745;
+    color: #fff;
+    border: none;
+}
+.btn-primary:hover {
+    background: #fff;
+    color: #142745;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+.btn-danger:hover {
+    background: #fff;
+    color: #dc3545;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+}

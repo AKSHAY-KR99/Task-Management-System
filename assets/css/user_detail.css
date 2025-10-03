@@ -1,0 +1,98 @@
+.user-detail-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+    text-align: center;
+}
+
+.page-title {
+    color: #142745;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* User Card */
+.user-card {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.user-info p {
+    margin: 12px 0;
+    font-size: 1rem;
+    color: #333;
+}
+.user-info span {
+    font-weight: 600;
+    color: #142745;
+    display: inline-block;
+    min-width: 100px;
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-danger, .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Primary (Edit) */
+.btn-primary {
+    background-color: #142745;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #fff;
+    color: #142745;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Danger (Delete) */
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #fff;
+    color: #dc3545;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Secondary (Back) */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+}

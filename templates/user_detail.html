@@ -1,0 +1,41 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/user_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="user-detail-container">
+    <h2 class="page-title">User Details</h2>
+
+    <!-- User Card -->
+    <div class="user-card">
+        <div class="user-info">
+            <p><span>Username:</span> {{ target_user.username }}</p>
+            <p><span>Email:</span> {{ target_user.email }}</p>
+            <p><span>Role:</span> {{ target_user.role|title }}</p>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-buttons">
+        {% if request.user.role == "super_admin" %}
+        <a href="{% url 'user_edit' target_user.pk %}" class="btn-primary">Edit</a>
+        <a href="{% url 'user_delete' target_user.pk %}" class="btn-danger">Delete</a>
+        {% endif %}
+        <a href="{% url 'user_list' %}" class="btn-secondary">Back to User List</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

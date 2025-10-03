@@ -1,0 +1,68 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_create.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="task-create-container">
+    <h2 class="page-title">Create Task</h2>
+
+    <div class="task-card">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="POST" class="task-create-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Title</label>
+                {{ form.title }}
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label>Assign To (User)</label>
+                {{ form.assigned_to }}
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                {{ form.due_date }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Create Task</button>
+                <a href="{% url 'dashboard' %}" class="btn-secondary">Back to Dashboard</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

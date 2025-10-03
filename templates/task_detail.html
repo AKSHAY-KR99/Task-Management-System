@@ -1,0 +1,44 @@
+{% extends 'home_page.html' %}
+{% load static %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_detail.css' %}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="task-detail-container">
+    <h2 class="page-title">Task Detail</h2>
+
+    <div class="task-card">
+        <table class="styled-table">
+            <tr><th>Title</th><td>{{ task.title }}</td></tr>
+            <tr><th>Description</th><td>{{ task.description }}</td></tr>
+            <tr><th>Assigned To</th><td>{{ task.assigned_to.username }} ({{ task.assigned_to.role }})</td></tr>
+            <tr><th>Assigned By</th><td>{% if task.assigned_by %}{{ task.assigned_by.username }}{% else %}-{% endif %}</td></tr>
+            <tr><th>Due Date</th><td>{{ task.due_date }}</td></tr>
+            <tr><th>Status</th><td class="status-{{ task.status }}">{{ task.status|title }}</td></tr>
+            <tr><th>Worked Hours</th><td>{{ task.worked_hours|default:"-" }}</td></tr>
+            <tr><th>Completion Report</th><td>{{ task.completion_report|default:"-" }}</td></tr>
+        </table>
+
+        <div class="task-actions">
+            <a href="{% url 'edit_task' task.pk %}" class="btn-primary">Edit</a>
+            {% if request.user.role == "super_admin" %}
+                <a href="{% url 'delete_task' task.pk %}" class="btn-danger">Delete</a>
+            {% endif %}
+            <a href="{% url 'task_list' %}" class="btn-secondary">Back to Task List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
